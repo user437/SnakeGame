@@ -14,9 +14,28 @@ namespace snake_game
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        SoundPlayer player = new SoundPlayer(); // object for sound
+        Random randfood = new Random(); // object to determine position of food
+
+        Graphics paper; // add game
+        snake snakes = new snake(); // add snake
+        Food food; // Add food
+        bool left = false;
+        bool right = false;
+        bool up = false;
+        bool down = false;
+        int score = 0;     
+            
+            
+        private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            InitializeComponent();
+            paper = e.Graphics;
+            food.drawFood(paper);
+            snakes.drawSnake(paper);
+        }    
+             
+        
+
         }
     }
 }
