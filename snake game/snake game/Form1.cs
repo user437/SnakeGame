@@ -33,8 +33,49 @@ namespace snake_game
             food.drawFood(paper);
             snakes.drawSnake(paper);
         }    
-             
-        
+             private void Form1_1KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Space)
+                
+
+        player.SoundLocation = 
+        player.Play();
+
+            timer1.Enabled = true;
+            tutosymasLabel.Text = "";
+            spaceBarLabel.Text = "";
+            down = false;
+            up = false;
+            left = false;
+            right = true;
+
+            if (e.KeyData == Keys.Down && up == false)
+            {
+                down = true;
+                up = false;
+                right = false;
+                left = false;
+            }
+
+            if (e.KeyData == Keys.Up && down == false)
+            {
+                down = false;
+                up = true;
+                right = false;
+                left = false;
+            }
+
+            if (e.KeyData== Keys.Left && right == false)
+            {
+                down = false;
+                up = false;
+                right = true;
+                left = false;
+            }
+
+            if (e.KeyData == Keys.Right && left == false)
+
+
 
         }
     }
