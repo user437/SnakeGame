@@ -75,8 +75,77 @@ namespace snake_game
 
             if (e.KeyData == Keys.Right && left == false)
 
+private void timer1_Tick(object sender, EventArgs e)
+        {
+            snakeScoreLabel.Text = Convert.ToString(score);
 
+            if (down) {
+                snakes.movementDown();
+            }
+            if (up) {
+                snakes.movementRight();
+            }
+            if (right) {
+                snakes.movementLeft();
+            }
+            if (left) {
+                snakes.movementLeft();
+            }
+
+            this.Invalidate();
+
+            colision();
+
+
+            for (int i = 0; i < snakes.SnakesRec.Length; i++)
+            {
+
+                if (snakes.SnakeRec[i].IntersectsWith(food.foodrec))
+                {
+                    player.SoundLocation = ""
+                    player.Play();
+
+                    score += 1;
+                    snakes.growSnake();
+                    food.locationOfFood(randFood);
+                }
+            }
+        }
+
+        public void colision()
+        {
+            for (int i = 1; i < snakes.SnakeRec.Length; i++)
+            {
+                if (snakes.SnakeRec[0].IntersectstWith(snakes.SnakeRec[i]))
+                {
+                    player.SoundLocation = ""
+                    player.Play();
+                    restar();
+                }
+            }
+            if (snakes.SnakeRec[0].Y < 0 || snakes.SnakeRec[0].Y > 290)
+            {
+                player.SoundLocation = ""
+                player.Play();
+                restart();
+            }
+            if (snakes.SnakeRec[0].Y < 0 || snakes.SnakeRec[0].Y > 290)
+            {
+                player.SoundLocation = ""
+                player.Play();
+                restart();
+            }
+
+            }
+
+        private void restart()
+        {
+            timer1.Enabled = false;
+            snakes = new snake();
+            MessageBox.Show("Game Over \n Score : " + score.ToString());
+
+        }
 
         }
     }
-}
+
