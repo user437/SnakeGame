@@ -143,8 +143,30 @@ private void timer1_Tick(object sender, EventArgs e)
             timer1.Enabled = false;
             snakes = new snake();
             MessageBox.Show("Game Over \n Score : " + score.ToString());
+            snakeScore.Text = "0";
+            LastScore.Text = score.ToString();
+            score = 0;
+            spaceBarLabel,Text = "Press space bar to begin";
 
         }
+
+        private void Form1_Lad(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+            spaceBarLabel.Text = "";
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            player.SoundLocation = ""
+            player.Play();
+        }
+
 
         }
     }
