@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel;
 
-using System.Media;
+using System.Media; //for sounds
 
 namespace snake_game
 {
@@ -19,37 +20,37 @@ namespace snake_game
 
         Graphics paper; // add game
         snake snakes = new snake(); // add snake
-        Food food; // Add food
+        food food; // Add food
         bool left = false;
         bool right = false;
         bool up = false;
         bool down = false;
-        int score = 0;     
+        int score = 0;     //score
             
             
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             paper = e.Graphics;
-            food.drawFood(paper);
+            food.drawfood(paper);
             snakes.drawSnake(paper);
         }    
              private void Form1_1KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Space)
                 
-
+                        // how to play
         player.SoundLocation = 
-        player.Play();
+        player.Play(); //play sound
 
             timer1.Enabled = true;
-            tutosymasLabel.Text = "";
+            tutosymaslabel.Text = "";
             spaceBarLabel.Text = "";
             down = false;
             up = false;
             left = false;
-            right = true;
+            right = true;   //snake is gonna go to the right
 
-            if (e.KeyData == Keys.Down && up == false)
+            if (e.KeyData == Keys.Down && up == false)          //press space to begin 
             {
                 down = true;
                 up = false;
@@ -57,7 +58,7 @@ namespace snake_game
                 left = false;
             }
 
-            if (e.KeyData == Keys.Up && down == false)
+            if (e.KeyData == Keys.Up && down == false) //only going up
             {
                 down = false;
                 up = true;
@@ -75,15 +76,15 @@ namespace snake_game
 
             if (e.KeyData == Keys.Right && left == false)
 
-private void timer1_Tick(object sender, EventArgs e)
+private void timer1_Tick(object sender, EventArgs e) //whats going to happen when timer begins
         {
-            snakeScoreLabel.Text = Convert.ToString(score);
+            snakeScoreLabel.Text = Convert.ToString(score); //actual score
 
             if (down) {
-                snakes.movementDown();
+                snakes.movementDown(); //checking wich ones are true from above 
             }
             if (up) {
-                snakes.movementRight();
+                snakes.movementRight(); //method from snake.cs to where the snake is going
             }
             if (right) {
                 snakes.movementLeft();
@@ -92,38 +93,38 @@ private void timer1_Tick(object sender, EventArgs e)
                 snakes.movementLeft();
             }
 
-            this.Invalidate();
+            this.Invalidate();  //drawing the snake again
 
-            colision();
+            colision(); //if snake crashes if not it grows
 
 
-            for (int i = 0; i < snakes.SnakesRec.Length; i++)
+            for (int i = 0; i < snakes.SnakesRec.Length; i++) //actual size of snake
             {
 
-                if (snakes.SnakeRec[i].IntersectsWith(food.foodrec))
+                if (snakes.SnakeRec[i].IntersectsWith(food.foodrec)) //if snake touch food
                 {
                     player.SoundLocation = ""
                     player.Play();
 
-                    score += 1;
+                    score += 1;     //score 1 plus 1
                     snakes.growSnake();
-                    food.locationOfFood(randFood);
+                    food.locationOfFood(randFood);  //random food position
                 }
             }
         }
 
         public void colision()
         {
-            for (int i = 1; i < snakes.SnakeRec.Length; i++)
+            for (int i = 1; i < snakes.SnakeRec.Length; i++)    //snake lenght
             {
-                if (snakes.SnakeRec[0].IntersectstWith(snakes.SnakeRec[i]))
+                if (snakes.SnakeRec[0].IntersectstWith(snakes.SnakeRec[i])) //is the snakes crashes with the tail
                 {
                     player.SoundLocation = ""
                     player.Play();
                     restar();
                 }
             }
-            if (snakes.SnakeRec[0].Y < 0 || snakes.SnakeRec[0].Y > 290)
+            if (snakes.SnakeRec[0].Y < 0 || snakes.SnakeRec[0].Y > 290) //if it crashes up or down
             {
                 player.SoundLocation = ""
                 player.Play();
@@ -138,34 +139,39 @@ private void timer1_Tick(object sender, EventArgs e)
 
             }
 
-        private void restart()
+        private void restart()      //method to restart
         {
-            timer1.Enabled = false;
-            snakes = new snake();
-            MessageBox.Show("Game Over \n Score : " + score.ToString());
-            snakeScore.Text = "0";
-            LastScore.Text = score.ToString();
-            score = 0;
+            timer1.Enabled = false; //timer off
+            snakes = new snake(); //add new snake
+            MessageBox.Show("Game Over \n Score : " + score.ToString()); // final message of game
+            snakeScoreLabel.Text = "0";  //restart score
+            LastScore.Text = score.ToString(); //last score
+            score = 0; //restart score variable
             spaceBarLabel,Text = "Press space bar to begin";
 
         }
 
-        private void Form1_Lad(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            timer1.Start();
-            spaceBarLabel.Text = "";
+            timer1.Start(); //pause the game
+            spaceBarLabel.Text = " Pause";
         }
 
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            timer1.Start(); // continue to play
+            spaceBarLabel.Text = "";
+        }
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             player.SoundLocation = ""
-            player.Play();
-        }
+            player.Play();      
+        }   
 
 
         }
