@@ -171,9 +171,12 @@ private void timer1_Tick(object sender, EventArgs e) //whats going to happen whe
         {
             player.SoundLocation = ""
             player.Play();      
-        }   
+        }
 
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
 
         }
+    }
     }
 
