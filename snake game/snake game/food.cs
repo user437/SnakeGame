@@ -22,8 +22,8 @@ namespace snake_game
             width = 10;
             height = 10;
             foodrec = new Rectangle(x, y, width, height); // food parameters
-
-            public void foodLocation(Random ranFood) // position of food
+        }
+        public void foodLocation(Random ranFood) // position of food
         {
             x = ranFood.Next(0, 29) * 10; // random position left or right
             y = ranFood.Next(0, 29) * 10; // random position up or down
@@ -36,8 +36,9 @@ namespace snake_game
             foodrec.X = x; // random position
             foodrec.Y = y; // random position
 
-            paper.FillRectangle(brush, foodrec); 
+            paper.FillRectangle(brush, foodrec);
         }
-    
+
     }
 }
+

@@ -50,34 +50,34 @@ namespace snake_game
             }
         }
 
-        //snake movement
+        //snake position
 
-        public void positionabajo() //position of head down
+        public void moveDown() //position of head down
         {
             drawSnake();
             snakeRec[0].Y += 10; // add 10 to Y down
         }
 
-        public void positionUp() //position of head up
+        public void moveUp() //position of head up
         {
             drawSnake();
             snakeRec[0].Y -= 10; // minus 10 to Y up
         }
 
-        public void positionLeft() //position of head left
+        public void moveLeft() //position of head left
         {
-            drawSnake(); 
+            drawSnake();
             snakeRec[0].X -= 10;
         }
 
-        public void positionRight() //position of head right
+        public void moveRight() //position of head right
         {
             drawSnake();
             snakeRec[0].X += 10; // add 10 to position X right 
         }
 
 
-        public void addSnake() //add rectangle more to snake
+        public void addSnake() //add rectangle more to snake grow
         {
             List<Rectangle> rec = snakeRec.ToList();
             rec.Add(new Rectangle(snakeRec[snakeRec.Length - 1].X, snakeRec[snakeRec.Length - 1].Y, width, height));
