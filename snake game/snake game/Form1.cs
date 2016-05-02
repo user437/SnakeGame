@@ -113,7 +113,7 @@ namespace snake_game
 
                 if (snakes.SnakeRec[i].IntersectsWith(food.foodrec)) //if snake touch food
                 {
-                    player.SoundLocation = "C:/dev/github/SnakeGame/snake game/snake game\resources\power";
+                    player.SoundLocation = "C:/dev/github/SnakeGame/snake game/snake game\resources/power";
                     player.Play();
 
                     score += 1;     //score 1 plus 1
@@ -155,7 +155,7 @@ namespace snake_game
             snakes = new snake(); //add new snake
             MessageBox.Show("Game Over \n Score : " + score.ToString()); // final message of game
             snakeScoreLabel.Text = "0";  //restart score
-            FinalScore.Text = score.ToString(); //last score
+            lastScore.Text = score.ToString(); //last score
             score = 0; //restart score variable
             spaceBarLabel.Text = "Press space bar to begin";
 
